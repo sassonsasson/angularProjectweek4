@@ -1,20 +1,92 @@
   <!DOCTYPE html>
-  <html>
+  <html ng-app="movieApp">
   <head>
     <title>Project Week 4</title>
-    <style type="text/css" src='style.css'></style>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css">
+    <link href="node_modules/font-awesome/css/font-awesome.css"></link>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css"></link>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
 
-  <body>
-    
+  <body class="text-center" ng-controller="movieCtrl">
+
+    <section class="topSection">
+
+      <div>
+        <div class="container">
+          <div class="row">
+              <div class="col-sm-3"> <h2> My Collection </h2> </div>
+              <div class="col-sm-3"> <button class="btn btn-warning" href="#" ng-click="makeFalse()">Delete Movies
+                </button> 
+                </div>
+              <div class="col-sm-3"> </div>
+              <div class="col-sm-3"> <h2> Current Balance: ${{money}} </h2> </div>
+            </div>
+              <div class="row">
+                <div class="col-sm-4">
+                 <input class="form-control ng-valid ng-dirty ng-valid-parse ng-empty ng-touched" type="text" ng-model="movieName" placeholder="Search by title">
+                </div>
+                <div class="col-sm-4">
+                  <select class="form-control ng-pristine ng-valid ng-empty ng-touched" ng-model="yearList">
+                   <option class="ng-binding ng-scope" value="2016">example 2016</option>
+                   <option ng-repeat="year in yearList" class="ng-binding ng-scope" value="{{year.year}}"></option>
+                  </select>
+                </div>
+                <div class="col-sm-4"> </div>
+              </div>
+                  <div class="row">
+                    <div ng-repeat="ta in transfer track by $index"  class='privateM'>
+                      <div class="col-sm-4 disMovie">
+                       <img class="img-rounded img-responsive" src='{{ta.img}}' ng-click=''>
+                       <button class="btn btn-warning" href="#" ng-click="removeMovie($index)" ng-show="val">Remove
+                       </button>
+                       <h3>{{ta.name}} {{ta.year}}</h3>
+                       <p> {{ta.desc}}</p>
+                    </div>
+                  </div>
+                </div>
+
+                </div>
+             <div class="row">
+              <div class="col-md-12"> <h1> {{balance}} </h1> </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
 
 
+    <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4"> <h3> The Comedy Movie Selection </h3> </div>
+        <div class="col-sm-4"> </div>
+        <div class="col-sm-4"> </div>
+      </div>
+        <div class="row">
+          <div class="col-sm-4"> 
+            <input class="form-control ng-valid ng-dirty ng-valid-parse ng-empty ng-touched" type="text" ng-model="movieName" placeholder="Search by title">
+          </div>
+          <div class="col-sm-4"> </div> 
+          <div class="col-sm-4"> </div>
+        </div>
 
-    <script src="node_modules/font-awesome/css/font-awesome.css"></script>
-    <script src="node_modules/bootstrap/dist/css/bootstrap.css"></script>
+     <div class="row">
+      <div ng-repeat="movie in movieList | orderBy: '-rank'" class='disMovie'>
+        <div class="col-sm-4 disMovie">
+         <img class="img-rounded img-responsive" src='{{movie.img}}' ng-click='selectMe(movie)'>
+         <h3>{{movie.name}}, {{movie.year}}</h3>
+         <p> {{movie.desc}}</p>
+       </div>
+      </div>
+      </div>
+      </div>
+    </section>
+
+
     <script src="node_modules/angular/angular.js"></script>
     <script src="app.js"></script>
+    <script src="service.js"></script>
   </body>
   </html>

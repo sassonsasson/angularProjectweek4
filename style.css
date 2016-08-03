@@ -1,0 +1,14 @@
+  .img-rounded {
+    max-height: 200px;
+    max-width: 300px;
+    padding-left: 25%;
+  }
+
+  .disMovie {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .topSection {
+    height: 350px;
+  }
